@@ -22,7 +22,7 @@ set /p snap=Snapshot path (*.msgpack):
 
 build\testbed.exe --snapshot=%snap% -m nerf
 
-title %title - Finished
+title %title% - Finished
 pause
 exit
 
@@ -45,7 +45,7 @@ call conda activate ngp
 python scripts/render.py --scene %dir%\%project% --n_seconds %seconds% --fps %fps% --render_name %project% --width %width% --height %height%
 rename %project%_test.mp4 %project%_render.mp4
 
-title %title - Finished
+title %title% - Finished
 pause
 exit
 
@@ -77,6 +77,6 @@ move transforms.json %dir%\%project%
 :run
 build\testbed.exe --scene %dir%\%project%
 
-title %title - Finished
+title %title% - Finished
 pause
 exit
