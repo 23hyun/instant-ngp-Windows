@@ -22,6 +22,7 @@ set /p snap=Snapshot path (*.msgpack):
 
 build\testbed.exe --snapshot=%snap% -m nerf
 
+title %title - Finished
 pause
 exit
 
@@ -44,6 +45,7 @@ call conda activate ngp
 python scripts/render.py --scene %dir%\%project% --n_seconds %seconds% --fps %fps% --render_name %project% --width %width% --height %height%
 rename %project%_test.mp4 %project%_render.mp4
 
+title %title - Finished
 pause
 exit
 
@@ -54,10 +56,11 @@ title %title% - New Project
 set path=%path%;%cd%\COLMAP
 
 set /p project=Project folder name: 
-if not exist %dir%\%project% (exit)
+if not exist %dir%\%project%\%dir%\%project% (exit)
 if %project% == "" (exit)
 
 choice /n /c yn /m "Generate transforms? (y/n): "
+echo.
 if errorlevel 2 goto run
 
 call conda activate ngp
@@ -74,5 +77,6 @@ move transforms.json %dir%\%project%
 :run
 build\testbed.exe --scene %dir%\%project%
 
+title %title - Finished
 pause
 exit
