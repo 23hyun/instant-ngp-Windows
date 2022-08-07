@@ -2,7 +2,7 @@
 set title=NeRF
 title %title%
 
-set dir=data\nerf
+set dir=data
 
 echo 1) New Project
 echo 2) Render Scene
